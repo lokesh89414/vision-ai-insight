@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Eye Diseases - Vision AI Insight</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <h1>Vision AI Insight</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="prediction.html">Prediction</a></li>
+          <li><a href="about-disease.html" class="active">About Disease</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <h1>Eye Disease Encyclopedia</h1>
+        <p>Learn about common eye conditions and how they affect vision</p>
+      </div>
+    </section>
+
+    <section class="disease-encyclopedia">
+      <div class="container">
+        <div class="disease-filters">
+          <button class="filter-btn active" data-filter="all">All Diseases</button>
+          <button class="filter-btn" data-filter="common">Common</button>
+          <button class="filter-btn" data-filter="severe">Severe</button>
+          <button class="filter-btn" data-filter="preventable">Preventable</button>
+        </div>
+
+        <div class="disease-grid">
+          <!-- Glaucoma -->
+          <div class="disease-card" data-category="common severe">
+            <div class="disease-image">
+              <img src="images/glaucoma.jpg" alt="Glaucoma eye condition">
+            </div>
+            <div class="disease-content">
+              <h3>Glaucoma</h3>
+              <p class="disease-description">A group of eye conditions that damage the optic nerve, often caused by abnormally high pressure in the eye.</p>
+              <button class="read-more-btn" data-disease="glaucoma">Learn More</button>
+            </div>
+          </div>
+
+          <!-- Diabetic Retinopathy -->
+          <div class="disease-card" data-category="common preventable">
+            <div class="disease-image">
+              <img src="images/diabetic-retinopathy.jpg" alt="Diabetic Retinopathy condition">
+            </div>
+            <div class="disease-content">
+              <h3>Diabetic Retinopathy</h3>
+              <p class="disease-description">A diabetes complication affecting eyes, caused by damage to blood vessels in the retina.</p>
+              <button class="read-more-btn" data-disease="diabetic-retinopathy">Learn More</button>
+            </div>
+          </div>
+
+          <!-- Cataracts -->
+          <div class="disease-card" data-category="common">
+            <div class="disease-image">
+              <img src="images/cataract.jpg" alt="Cataract eye condition">
+            </div>
+            <div class="disease-content">
+              <h3>Cataracts</h3>
+              <p class="disease-description">A clouding of the eye's natural lens that affects vision, commonly related to aging.</p>
+              <button class="read-more-btn" data-disease="cataracts">Learn More</button>
+            </div>
+          </div>
+
+          <!-- Age-Related Macular Degeneration (AMD) -->
+          <div class="disease-card" data-category="severe">
+            <div class="disease-image">
+              <img src="images/amd.jpg" alt="Age-related Macular Degeneration">
+            </div>
+            <div class="disease-content">
+              <h3>Age-Related Macular Degeneration</h3>
+              <p class="disease-description">A condition that affects the macula, the part of the eye that controls sharp, straight-ahead vision.</p>
+              <button class="read-more-btn" data-disease="amd">Learn More</button>
+            </div>
+          </div>
+
+          <!-- Dry Eye Syndrome -->
+          <div class="disease-card" data-category="common preventable">
+            <div class="disease-image">
+              <img src="images/dry-eye.jpg" alt="Dry Eye Syndrome">
+            </div>
+            <div class="disease-content">
+              <h3>Dry Eye Syndrome</h3>
+              <p class="disease-description">A condition where eyes don't produce enough tears or tears evaporate too quickly.</p>
+              <button class="read-more-btn" data-disease="dry-eye">Learn More</button>
+            </div>
+          </div>
+
+          <!-- Retinal Detachment -->
+          <div class="disease-card" data-category="severe">
+            <div class="disease-image">
+              <img src="images/retinal-detachment.jpg" alt="Retinal Detachment">
+            </div>
+            <div class="disease-content">
+              <h3>Retinal Detachment</h3>
+              <p class="disease-description">A serious condition where the retina pulls away from the supportive tissue at the back of the eye.</p>
+              <button class="read-more-btn" data-disease="retinal-detachment">Learn More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="disease-detail" id="disease-detail" hidden>
+      <div class="container">
+        <div class="detail-header">
+          <button class="back-button"><i class="fas fa-arrow-left"></i> Back to All Diseases</button>
+          <h2 id="disease-title"></h2>
+        </div>
+
+        <div class="detail-content">
+          <div class="detail-media">
+            <div class="detail-image">
+              <img id="disease-detail-image" alt="Eye disease detail image">
+            </div>
+            <div class="3d-model-viewer" id="model-viewer">
+              <div class="model-placeholder">
+                <p>Interactive 3D model loading...</p>
+                <div class="spinner"></div>
+              </div>
+              <div class="model-controls">
+                <button class="model-control-btn" id="rotate-left"><i class="fas fa-undo"></i></button>
+                <button class="model-control-btn" id="rotate-right"><i class="fas fa-redo"></i></button>
+                <button class="model-control-btn" id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                <button class="model-control-btn" id="zoom-out"><i class="fas fa-search-minus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-info">
+            <div class="detail-tabs">
+              <button class="tab-btn active" data-tab="overview">Overview</button>
+              <button class="tab-btn" data-tab="symptoms">Symptoms</button>
+              <button class="tab-btn" data-tab="causes">Causes</button>
+              <button class="tab-btn" data-tab="treatment">Treatment</button>
+              <button class="tab-btn" data-tab="prevention">Prevention</button>
+            </div>
+
+            <div class="tab-content" id="overview-content">
+              <!-- Will be filled dynamically by JavaScript -->
+            </div>
+            
+            <div class="tab-content" id="symptoms-content" hidden>
+              <!-- Will be filled dynamically by JavaScript -->
+            </div>
+            
+            <div class="tab-content" id="causes-content" hidden>
+              <!-- Will be filled dynamically by JavaScript -->
+            </div>
+            
+            <div class="tab-content" id="treatment-content" hidden>
+              <!-- Will be filled dynamically by JavaScript -->
+            </div>
+            
+            <div class="tab-content" id="prevention-content" hidden>
+              <!-- Will be filled dynamically by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-advancements">
+      <div class="container">
+        <h2>Advancements in AI-Driven Eye Disease Detection</h2>
+        
+        <div class="timeline-container">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Early 2000s</h3>
+                <p>First computer-aided diagnosis systems for retinal images with basic image processing techniques.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2012</h3>
+                <p>Introduction of deep learning methods for medical image analysis, achieving modest accuracy for diabetic retinopathy detection.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2016</h3>
+                <p>Google's DeepMind achieves expert-level accuracy for detecting diabetic retinopathy from retinal photographs.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2018</h3>
+                <p>FDA approves first AI-based diagnostic system for autonomous detection of diabetic retinopathy.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2020</h3>
+                <p>Multi-disease detection models emerge, capable of identifying multiple eye conditions from a single scan.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>2023</h3>
+                <p>Real-time mobile-based AI diagnostics become available, democratizing access to eye disease screening worldwide.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Today</h3>
+                <p>Vision AI Insight brings cutting-edge CNN models to everyone, with accessibility features and multi-language support.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="disease-modal" class="modal">
+    <div class="modal-content large-modal">
+      <span class="close-modal">&times;</span>
+      <div id="modal-content-container">
+        <!-- Will be filled dynamically by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Vision AI Insight</h2>
+          <p>Advanced AI-powered eye disease detection</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="prediction.html">Prediction</a></li>
+            <li><a href="about-disease.html">About Disease</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Connect With Us</h3>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Stay Updated</h3>
+          <p>Subscribe to our newsletter for the latest updates</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email Address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vision AI Insight. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="accessibility-controls">
+    <button id="speech-to-text-btn" aria-label="Speech to text"><i class="fas fa-microphone"></i></button>
+    <button id="language-selector-btn" aria-label="Change language"><i class="fas fa-globe"></i></button>
+  </div>
+
+  <div class="language-selector">
+    <div class="language-selector-content">
+      <h3>Select Language</h3>
+      <ul>
+        <li data-lang="en" class="active">English</li>
+        <li data-lang="es">Español</li>
+        <li data-lang="fr">Français</li>
+        <li data-lang="de">Deutsch</li>
+        <li data-lang="zh">中文</li>
+      </ul>
+      <button class="close-btn"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/about-disease.js"></script>
+</body>
+</html>

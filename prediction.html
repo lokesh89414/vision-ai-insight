@@ -1,282 +1,240 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prediction - Vision AI Insight</title>
-    <meta name="description" content="Upload your eye image for AI-powered disease detection" />
-    <meta name="author" content="Vision AI Insight" />
-    
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="Vision AI Insight - Prediction" />
-    <meta property="og:description" content="AI-powered eye disease detection analysis" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <!-- Twitter Card tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@vision_ai_insight" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="src/styles.css">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- Chart.js for visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-
-  <body>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-      <div class="navbar-container">
-        <div class="logo">
-          <i class="fas fa-eye logo-icon"></i>
-          <span>Vision AI</span>
-        </div>
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html">Home</a></li>
-          <li class="nav-item active"><a href="prediction.html">Prediction</a></li>
-          <li class="nav-item"><a href="about.html">About Disease</a></li>
-        </ul>
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction - Vision AI Insight</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <h1>Vision AI Insight</h1>
       </div>
-    </nav>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="prediction.html" class="active">Prediction</a></li>
+          <li><a href="about-disease.html">About Disease</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
 
-    <!-- Page Header -->
-    <header class="page-header">
-      <h1>Eye Disease Prediction</h1>
-      <p>Upload an eye image for AI-powered analysis and detection</p>
-    </header>
+  <main>
+    <section class="prediction-hero">
+      <div class="container">
+        <h1>Eye Disease Detection</h1>
+        <p>Upload an eye image for AI-powered analysis and detection</p>
+      </div>
+    </section>
 
-    <main class="prediction-container">
-      <section class="upload-section">
-        <div class="upload-card">
-          <h2><i class="fas fa-cloud-upload-alt"></i> Upload Image</h2>
-          <div class="upload-area" id="drop-area">
-            <p>Drag & drop your eye scan image here</p>
-            <p>or</p>
-            <label for="fileInput" class="upload-button">
-              Select File
-              <input type="file" id="fileInput" accept="image/*" hidden />
-            </label>
-            <p class="file-info" id="fileInfo">Accepted formats: JPG, PNG (Max: 5MB)</p>
-            <div class="image-preview" id="imagePreview">
-              <img id="previewImage" src="" alt="Preview" />
+    <section class="prediction-content">
+      <div class="container">
+        <div class="upload-container">
+          <div class="upload-area" id="upload-area">
+            <div class="upload-instruction">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <h3>Drag & Drop or Click to Upload</h3>
+              <p>Supported formats: JPG, PNG, JPEG (Max size: 10MB)</p>
             </div>
+            <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
           </div>
-          <button id="analyzeBtn" class="analyze-button" disabled>
-            <i class="fas fa-search"></i> Analyze Image
-          </button>
-        </div>
-      </section>
-
-      <!-- Analysis section (initially hidden) -->
-      <section class="analysis-section" id="analysisSection" style="display: none;">
-        <div class="loading-screen" id="loadingScreen">
-          <div class="loading-spinner"></div>
-          <p>Analyzing your eye scan...</p>
-          <div class="progress-bar-container">
-            <div class="progress-bar" id="progressBar"></div>
-          </div>
-          <div class="analysis-steps">
-            <p id="analysisStep">Initializing AI model...</p>
+          <div class="or-divider">OR</div>
+          <div class="camera-capture">
+            <button class="camera-btn" id="camera-btn">
+              <i class="fas fa-camera"></i> Take a Photo
+            </button>
+            <video id="camera-feed" autoplay playsinline hidden></video>
+            <canvas id="camera-canvas" hidden></canvas>
           </div>
         </div>
 
-        <div class="results-card" id="resultsCard" style="display: none;">
-          <h2><i class="fas fa-clipboard-check"></i> Analysis Results</h2>
+        <div class="model-status">
+          <p><i class="fas fa-circle-notch fa-spin"></i> Loading AI model... <span id="model-status-text">0%</span></p>
+        </div>
+
+        <div class="analysis-container" id="analysis-container" hidden>
+          <div class="image-preview">
+            <img id="preview-image" alt="Eye scan image preview">
+          </div>
           
-          <div class="result-summary">
-            <div class="result-icon">
-              <i class="fas fa-eye"></i>
+          <div class="analysis-progress" id="analysis-progress">
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="analysis-progress-bar"></div>
             </div>
-            <div class="result-details">
-              <h3 id="diagnosisResult">Detected: <span>Healthy</span></h3>
+            <p class="progress-text">Analyzing image... <span id="progress-percentage">0%</span></p>
+          </div>
+
+          <div class="analysis-results" id="analysis-results" hidden>
+            <div class="result-header">
+              <h2>Diagnosis Results</h2>
               <div class="confidence-score">
                 <span>Confidence Score:</span>
                 <div class="confidence-meter">
-                  <div class="confidence-fill" id="confidenceFill"></div>
+                  <div class="confidence-fill" id="confidence-fill"></div>
                 </div>
-                <span id="confidenceValue">95%</span>
+                <span id="confidence-percentage">0%</span>
               </div>
             </div>
-          </div>
 
-          <div class="results-data">
-            <div class="chart-container">
-              <h3>Probability Breakdown</h3>
-              <canvas id="resultsChart"></canvas>
+            <div class="result-cards">
+              <div class="result-card primary-condition" id="primary-condition">
+                <h3>Primary Condition</h3>
+                <div class="condition-details">
+                  <p class="condition-name">--</p>
+                  <p class="condition-probability">--</p>
+                </div>
+              </div>
+
+              <div class="result-card secondary-conditions" id="secondary-conditions">
+                <h3>Other Possibilities</h3>
+                <ul class="conditions-list">
+                  <!-- Will be populated by JavaScript -->
+                </ul>
+              </div>
+
+              <div class="result-card recommendations" id="recommendations">
+                <h3>Recommendations</h3>
+                <div class="recommendation-content">
+                  <!-- Will be populated by JavaScript -->
+                </div>
+              </div>
             </div>
 
-            <div class="recommendations">
-              <h3>Recommendations</h3>
-              <div class="recommendation-item">
-                <i class="fas fa-check-circle"></i>
-                <p id="primaryRecommendation">No immediate action required. Schedule regular check-up.</p>
-              </div>
-              <div class="recommendation-item">
-                <i class="fas fa-info-circle"></i>
-                <p>Maintain regular eye examination schedule</p>
-              </div>
-              <div class="recommendation-item">
-                <i class="fas fa-shield-alt"></i>
-                <p>Protect your eyes from excessive screen time</p>
-              </div>
+            <div class="result-actions">
+              <button class="action-btn" id="download-report-btn">
+                <i class="fas fa-download"></i> Download Report
+              </button>
+              <button class="action-btn" id="email-doctor-btn">
+                <i class="fas fa-envelope"></i> Email to Doctor
+              </button>
+              <button class="action-btn" id="start-over-btn">
+                <i class="fas fa-redo"></i> New Analysis
+              </button>
             </div>
-          </div>
-
-          <div class="action-buttons">
-            <button id="downloadReportBtn" class="action-button">
-              <i class="fas fa-file-download"></i> Download Report
-            </button>
-            <button id="shareResultBtn" class="action-button">
-              <i class="fas fa-share-alt"></i> Share Results
-            </button>
-            <button id="newAnalysisBtn" class="action-button secondary">
-              <i class="fas fa-redo"></i> New Analysis
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- AI Chatbot -->
-      <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header" id="chatbotHeader">
-          <h3><i class="fas fa-robot"></i> AI Assistant</h3>
-          <button id="toggleChatBtn">
-            <i class="fas fa-chevron-down" id="chatToggleIcon"></i>
-          </button>
-        </div>
-        
-        <div class="chatbot-body" id="chatbotBody">
-          <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">
-              <div class="message-avatar">
-                <i class="fas fa-robot"></i>
-              </div>
-              <div class="message-content">
-                <p>Hello! I'm your Vision AI assistant. How can I help you with your eye health today?</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Type your question here...">
-            <button id="sendMessageBtn">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-            <button id="micButton">
-              <i class="fas fa-microphone"></i>
-            </button>
           </div>
         </div>
       </div>
-    </main>
+    </section>
 
-    <!-- Share Modal -->
-    <div class="modal" id="shareModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Share Your Results</h2>
-          <span class="close-modal">&times;</span>
-        </div>
-        <div class="modal-body">
-          <div class="share-options">
-            <h3>Share via Email</h3>
-            <div class="email-share">
-              <input type="email" id="doctorEmail" placeholder="Doctor's email address">
-              <textarea id="emailMessage" placeholder="Add a message (optional)"></textarea>
-              <button id="sendEmailBtn" class="action-button">
-                <i class="fas fa-envelope"></i> Send to Doctor
-              </button>
-            </div>
-            
-            <h3>Share via Social Media</h3>
-            <div class="social-share">
-              <button class="social-share-btn facebook">
-                <i class="fab fa-facebook-f"></i> Facebook
-              </button>
-              <button class="social-share-btn twitter">
-                <i class="fab fa-twitter"></i> Twitter
-              </button>
-              <button class="social-share-btn whatsapp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-              </button>
-            </div>
-            
-            <h3>Direct Link</h3>
-            <div class="link-share">
-              <input type="text" id="shareLink" value="https://visionai.com/results/ABC123" readonly>
-              <button id="copyLinkBtn" class="action-button secondary">
-                <i class="fas fa-copy"></i> Copy Link
-              </button>
+    <section class="chatbot-section">
+      <div class="container">
+        <div class="chatbot-container" id="chatbot-container">
+          <div class="chatbot-header">
+            <h3>AI Assistant</h3>
+            <button class="minimize-btn" id="minimize-chatbot"><i class="fas fa-minus"></i></button>
+          </div>
+          <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot">
+              <div class="avatar"><i class="fas fa-robot"></i></div>
+              <div class="message-content">
+                <p>Hello! I'm your AI assistant. I can answer questions about your diagnosis or eye health in general. How can I help you today?</p>
+              </div>
             </div>
           </div>
+          <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="Type your question...">
+            <button id="send-message-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
         </div>
+        <button class="chatbot-toggle" id="chatbot-toggle">
+          <i class="fas fa-robot"></i> AI Assistant
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div id="email-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Email Results to Doctor</h2>
+      <form id="email-form">
+        <div class="form-group">
+          <label for="doctor-email">Doctor's Email:</label>
+          <input type="email" id="doctor-email" required>
+        </div>
+        <div class="form-group">
+          <label for="your-name">Your Name:</label>
+          <input type="text" id="your-name" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Additional Information (optional):</label>
+          <textarea id="message" rows="4"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Email</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Vision AI Insight</h2>
+          <p>Advanced AI-powered eye disease detection</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="prediction.html">Prediction</a></li>
+            <li><a href="about-disease.html">About Disease</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Connect With Us</h3>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Stay Updated</h3>
+          <p>Subscribe to our newsletter for the latest updates</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email Address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vision AI Insight. All rights reserved.</p>
       </div>
     </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-logo">
-          <i class="fas fa-eye logo-icon"></i>
-          <span>Vision AI</span>
-        </div>
-        
-        <div class="footer-links">
-          <div class="footer-section">
-            <h3>Navigation</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="prediction.html">Prediction</a></li>
-              <li><a href="about.html">About Disease</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-section">
-            <h3>Contact</h3>
-            <ul>
-              <li><i class="fas fa-envelope"></i> contact@visionai.com</li>
-              <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-              <li><i class="fas fa-map-marker-alt"></i> 123 AI Avenue, Tech City</li>
-            </ul>
-          </div>
-          
-          <div class="footer-section">
-            <h3>Social Media</h3>
-            <div class="social-icons">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2025 Vision AI Insight. All Rights Reserved.</p>
-      </div>
-    </footer>
+  <div class="accessibility-controls">
+    <button id="speech-to-text-btn" aria-label="Speech to text"><i class="fas fa-microphone"></i></button>
+    <button id="language-selector-btn" aria-label="Change language"><i class="fas fa-globe"></i></button>
+  </div>
 
-    <!-- JavaScript -->
-    <script src="src/script.js"></script>
-  </body>
+  <div class="language-selector">
+    <div class="language-selector-content">
+      <h3>Select Language</h3>
+      <ul>
+        <li data-lang="en" class="active">English</li>
+        <li data-lang="es">Español</li>
+        <li data-lang="fr">Français</li>
+        <li data-lang="de">Deutsch</li>
+        <li data-lang="zh">中文</li>
+      </ul>
+      <button class="close-btn"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/prediction.js"></script>
+</body>
 </html>
