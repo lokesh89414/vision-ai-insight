@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Eye Diseases - Vision AI Insight</title>
+    <meta name="description" content="Learn about common eye diseases and conditions" />
+    <meta name="author" content="Vision AI Insight" />
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Vision AI Insight - About Eye Diseases" />
+    <meta property="og:description" content="Learn about common eye diseases and their symptoms" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@vision_ai_insight" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="src/styles.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Three.js for 3D models -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+
+  <body>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <i class="fas fa-eye logo-icon"></i>
+          <span>Vision AI</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="prediction.html">Prediction</a></li>
+          <li class="nav-item active"><a href="about.html">About Disease</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1>Eye Disease Encyclopedia</h1>
+      <p>Learn about common eye diseases, their symptoms, and treatments</p>
+    </header>
+
+    <!-- Interactive 3D Eye Model -->
+    <section class="eye-model-section">
+      <div class="section-title">
+        <h2>Interactive Eye Model</h2>
+        <p>Explore the anatomy of the human eye in 3D</p>
+      </div>
+      
+      <div class="eye-model-container">
+        <div id="eyeModelCanvas"></div>
+        <div class="eye-model-controls">
+          <button id="rotateLeft" class="model-control-btn">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <button id="resetView" class="model-control-btn">
+            <i class="fas fa-sync"></i>
+          </button>
+          <button id="rotateRight" class="model-control-btn">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="eye-parts-info">
+          <p id="eyePartDescription">Click on different parts of the eye to learn more</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disease Encyclopedia -->
+    <section class="disease-encyclopedia">
+      <div class="section-title">
+        <h2>Common Eye Diseases</h2>
+        <p>Learn about symptoms, causes, and treatments</p>
+      </div>
+      
+      <div class="disease-tabs">
+        <button class="tab-button active" data-disease="glaucoma">Glaucoma</button>
+        <button class="tab-button" data-disease="cataract">Cataract</button>
+        <button class="tab-button" data-disease="diabetic-retinopathy">Diabetic Retinopathy</button>
+        <button class="tab-button" data-disease="amd">Age-related Macular Degeneration</button>
+        <button class="tab-button" data-disease="conjunctivitis">Conjunctivitis</button>
+      </div>
+      
+      <div class="disease-content">
+        <!-- Glaucoma Content -->
+        <div class="disease-tab-content active" id="glaucoma-content">
+          <div class="disease-header">
+            <div class="disease-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="disease-title">
+              <h3>Glaucoma</h3>
+              <span class="disease-subtitle">The "Silent Thief of Sight"</span>
+            </div>
+          </div>
+          
+          <div class="disease-description">
+            <p>
+              Glaucoma is a group of eye conditions that damage the optic nerve, 
+              which is vital for good vision. This damage is often caused by abnormally 
+              high pressure in your eye. It's one of the leading causes of blindness 
+              for people over the age of 60.
+            </p>
+          </div>
+          
+          <div class="disease-details">
+            <div class="disease-images">
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Eye examination for glaucoma">
+              <div class="image-comparison">
+                <div class="comparison-slide">
+                  <img src="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Normal vision" class="comparison-image">
+                  <p>Normal Vision</p>
+                </div>
+                <div class="comparison-slide">
+                  <img src="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Vision with Glaucoma" class="comparison-image vision-glaucoma">
+                  <p>Vision with Glaucoma</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="disease-info">
+              <div class="info-section">
+                <h4><i class="fas fa-exclamation-triangle"></i> Symptoms</h4>
+                <ul>
+                  <li>Patchy blind spots in peripheral or central vision</li>
+                  <li>Tunnel vision (in advanced stages)</li>
+                  <li>Severe eye pain</li>
+                  <li>Nausea and vomiting</li>
+                  <li>Blurred vision</li>
+                  <li>Halos around lights</li>
+                  <li>Redness in the eye</li>
+                </ul>
+              </div>
+              
+              <div class="info-section">
+                <h4><i class="fas fa-question-circle"></i> Causes</h4>
+                <ul>
+                  <li>Increased intraocular pressure</li>
+                  <li>Blocked or restricted drainage in the eye</li>
+                  <li>Reduced blood flow to the optic nerve</li>
+                  <li>Genetic factors</li>
+                </ul>
+              </div>
+              
+              <div class="info-section">
+                <h4><i class="fas fa-clipboard-list"></i> Risk Factors</h4>
+                <ul>
+                  <li>Age over 60</li>
+                  <li>Family history of glaucoma</li>
+                  <li>Medical conditions (diabetes, heart disease)</li>
+                  <li>High eye pressure</li>
+                  <li>Certain ethnicities (African, Asian)</li>
+                  <li>Previous eye injuries</li>
+                </ul>
+              </div>
+              
+              <div class="info-section">
+                <h4><i class="fas fa-medkit"></i> Treatment Options</h4>
+                <ul>
+                  <li>Eye drops to reduce pressure</li>
+                  <li>Oral medications</li>
+                  <li>Laser therapy</li>
+                  <li>Surgery (trabeculectomy)</li>
+                  <li>Minimally invasive glaucoma surgery (MIGS)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="disease-prevention">
+            <h4><i class="fas fa-shield-alt"></i> Prevention & Management</h4>
+            <div class="prevention-tips">
+              <div class="prevention-tip">
+                <div class="tip-icon">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Regular Eye Exams</h5>
+                  <p>Early detection through comprehensive eye exams is crucial</p>
+                </div>
+              </div>
+              
+              <div class="prevention-tip">
+                <div class="tip-icon">
+                  <i class="fas fa-pills"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Medication Adherence</h5>
+                  <p>Take prescribed eye drops regularly as directed</p>
+                </div>
+              </div>
+              
+              <div class="prevention-tip">
+                <div class="tip-icon">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Healthy Lifestyle</h5>
+                  <p>Exercise regularly and maintain healthy blood pressure</p>
+                </div>
+              </div>
+              
+              <div class="prevention-tip">
+                <div class="tip-icon">
+                  <i class="fas fa-eye-slash"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Eye Protection</h5>
+                  <p>Prevent eye injuries by wearing protective eyewear</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="learn-more">
+            <a href="#" class="learn-more-btn">Learn More About Glaucoma</a>
+          </div>
+        </div>
+
+        <!-- Placeholder for other disease contents -->
+        <div class="disease-tab-content" id="cataract-content">
+          <div class="disease-header">
+            <div class="disease-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="disease-title">
+              <h3>Cataract</h3>
+              <span class="disease-subtitle">Clouding of the eye's natural lens</span>
+            </div>
+          </div>
+          
+          <div class="disease-description">
+            <p>
+              A cataract is a clouding of the normally clear lens of the eye. For people who have cataracts,
+              seeing through cloudy lenses is like looking through a frosty or fogged-up window. 
+              Clouded vision caused by cataracts can make it difficult to read, drive a car or see the expression on a friend's face.
+            </p>
+          </div>
+          
+          <!-- More content would be added here similar to the glaucoma section -->
+        </div>
+        
+        <div class="disease-tab-content" id="diabetic-retinopathy-content">
+          <!-- Content similar to above -->
+          <div class="disease-header">
+            <div class="disease-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="disease-title">
+              <h3>Diabetic Retinopathy</h3>
+              <span class="disease-subtitle">Diabetes-related eye condition</span>
+            </div>
+          </div>
+          
+          <div class="disease-description">
+            <p>
+              Diabetic retinopathy is a diabetes complication that affects the eyes. It's caused by damage to the blood vessels
+              of the light-sensitive tissue at the back of the eye (retina). Initially, diabetic retinopathy might cause no symptoms
+              or only mild vision problems, but it can eventually lead to blindness.
+            </p>
+          </div>
+        </div>
+        
+        <div class="disease-tab-content" id="amd-content">
+          <!-- Content similar to above -->
+          <div class="disease-header">
+            <div class="disease-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="disease-title">
+              <h3>Age-related Macular Degeneration</h3>
+              <span class="disease-subtitle">Leading cause of vision loss in older adults</span>
+            </div>
+          </div>
+          
+          <div class="disease-description">
+            <p>
+              Age-related macular degeneration (AMD) is an eye disease that may get worse over time. It's the leading cause
+              of severe, permanent vision loss in people over age 60. It happens when the small central portion of your retina,
+              called the macula, wears down. The retina is the light-sensing nerve tissue at the back of your eye.
+            </p>
+          </div>
+        </div>
+        
+        <div class="disease-tab-content" id="conjunctivitis-content">
+          <!-- Content similar to above -->
+          <div class="disease-header">
+            <div class="disease-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="disease-title">
+              <h3>Conjunctivitis</h3>
+              <span class="disease-subtitle">Pink Eye</span>
+            </div>
+          </div>
+          
+          <div class="disease-description">
+            <p>
+              Pink eye (conjunctivitis) is inflammation or infection of the transparent membrane that lines your eyelid 
+              and covers the white part of your eyeball. When small blood vessels in the conjunctiva become inflamed, 
+              they're more visible. This is what causes the whites of your eyes to appear reddish or pink.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Detection Timeline -->
+    <section class="ai-timeline-section">
+      <div class="section-title">
+        <h2>Evolution of AI in Eye Disease Detection</h2>
+        <p>The journey from traditional diagnostics to advanced AI analysis</p>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-container left">
+          <div class="timeline-content">
+            <h3>2010</h3>
+            <p>Early machine learning models achieve basic retinal image classification with limited accuracy</p>
+          </div>
+        </div>
+        
+        <div class="timeline-container right">
+          <div class="timeline-content">
+            <h3>2015</h3>
+            <p>Deep learning neural networks improve detection rates for diabetic retinopathy</p>
+          </div>
+        </div>
+        
+        <div class="timeline-container left">
+          <div class="timeline-content">
+            <h3>2018</h3>
+            <p>First FDA-approved AI system for autonomous detection of diabetic retinopathy</p>
+          </div>
+        </div>
+        
+        <div class="timeline-container right">
+          <div class="timeline-content">
+            <h3>2020</h3>
+            <p>AI systems achieve specialist-level accuracy in detecting multiple eye conditions</p>
+          </div>
+        </div>
+        
+        <div class="timeline-container left">
+          <div class="timeline-content">
+            <h3>2023</h3>
+            <p>Real-time AI analysis becomes available for multiple eye diseases with enhanced accuracy</p>
+          </div>
+        </div>
+        
+        <div class="timeline-container right">
+          <div class="timeline-content">
+            <h3>2025</h3>
+            <p>Vision AI platform launches with comprehensive disease detection capabilities and personalized recommendations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+      <div class="section-title">
+        <h2>Additional Resources</h2>
+        <p>Learn more about eye health and disease prevention</p>
+      </div>
+      
+      <div class="resources-container">
+        <div class="resource-card">
+          <div class="resource-icon">
+            <i class="fas fa-book-medical"></i>
+          </div>
+          <h3>Educational Materials</h3>
+          <ul>
+            <li><a href="#">Understanding Eye Anatomy</a></li>
+            <li><a href="#">Early Warning Signs of Eye Disease</a></li>
+            <li><a href="#">Maintaining Healthy Vision</a></li>
+            <li><a href="#">Children's Eye Health Guide</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <h3>Professional Organizations</h3>
+          <ul>
+            <li><a href="#">American Academy of Ophthalmology</a></li>
+            <li><a href="#">National Eye Institute</a></li>
+            <li><a href="#">World Health Organization - Vision</a></li>
+            <li><a href="#">International Council of Ophthalmology</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <h3>Video Tutorials</h3>
+          <ul>
+            <li><a href="#">How to Use Vision AI Platform</a></li>
+            <li><a href="#">Taking Quality Eye Images</a></li>
+            <li><a href="#">Understanding Your Results</a></li>
+            <li><a href="#">Eye Exercise Techniques</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Check Your Eye Health?</h2>
+        <p>Upload your eye scan and get an instant AI-powered analysis</p>
+        <a href="prediction.html" class="cta-button">Start Free Diagnosis</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <i class="fas fa-eye logo-icon"></i>
+          <span>Vision AI</span>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-section">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="prediction.html">Prediction</a></li>
+              <li><a href="about.html">About Disease</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+              <li><i class="fas fa-envelope"></i> contact@visionai.com</li>
+              <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+              <li><i class="fas fa-map-marker-alt"></i> 123 AI Avenue, Tech City</li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Social Media</h3>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vision AI Insight. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="src/script.js"></script>
+    <script src="src/eye-model.js"></script>
+  </body>
+</html>

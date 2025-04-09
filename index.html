@@ -1,26 +1,248 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vision-ai-insight</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <meta property="og:title" content="vision-ai-insight" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <title>Vision AI Insight - Eye Disease Detection</title>
+    <meta name="description" content="AI-powered eye disease detection platform for fast, accurate diagnoses" />
+    <meta name="author" content="Vision AI Insight" />
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Vision AI Insight" />
+    <meta property="og:description" content="AI-powered eye disease detection platform" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
+    <!-- Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:site" content="@vision_ai_insight" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="src/styles.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <i class="fas fa-eye logo-icon"></i>
+          <span>Vision AI</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item active"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="prediction.html">Prediction</a></li>
+          <li class="nav-item"><a href="about.html">About Disease</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="animate-fade-in">AI-Powered Eye Disease Detection</h1>
+        <h2 class="tagline animate-fade-in">Fast, Accurate, and Reliable</h2>
+        <p class="subtitle animate-fade-in">
+          Cutting-edge artificial intelligence for early detection of eye diseases, 
+          providing reliable analysis and personalized recommendations.
+        </p>
+        <a href="prediction.html" class="cta-button animate-fade-in">Start Diagnosis</a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <h2 class="section-title">Our Key Features</h2>
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Fast Analysis</h3>
+          <p>Get your eye scan analyzed in seconds with our state-of-the-art AI technology</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>High Accuracy</h3>
+          <p>Advanced algorithms trained on millions of eye scans for precise diagnostic results</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>AI-Powered</h3>
+          <p>Utilizing cutting-edge machine learning models to identify potential eye conditions</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-laptop-medical"></i>
+          </div>
+          <h3>User-Friendly</h3>
+          <p>Intuitive interface designed for ease of use by both patients and healthcare providers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Stats Dashboard -->
+    <section class="stats">
+      <h2 class="section-title">Live Stats Dashboard</h2>
+      <div class="stats-container">
+        <div class="stat-card">
+          <h3 class="stat-number" id="analyzed-cases">0</h3>
+          <p>Cases Analyzed</p>
+        </div>
+        
+        <div class="stat-card">
+          <h3 class="stat-number" id="detection-rate">0%</h3>
+          <p>Detection Rate</p>
+        </div>
+        
+        <div class="stat-card">
+          <h3 class="stat-number" id="active-users">0</h3>
+          <p>Active Users</p>
+        </div>
+        
+        <div class="stat-card">
+          <h3 class="stat-number" id="accuracy">0%</h3>
+          <p>Accuracy</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <h2 class="section-title">User Testimonials</h2>
+      <div class="testimonial-container">
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+          </div>
+          <div class="testimonial-content">
+            <p class="testimonial-text">"The platform detected early signs of glaucoma that my regular check-up missed. I'm grateful for this technology!"</p>
+            <p class="testimonial-author">- Sarah Johnson</p>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dr. Michael Chen">
+          </div>
+          <div class="testimonial-content">
+            <p class="testimonial-text">"As an ophthalmologist, I'm impressed by the accuracy of this AI system. It's become an invaluable tool in my practice."</p>
+            <p class="testimonial-author">- Dr. Michael Chen</p>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+          </div>
+          <div class="testimonial-content">
+            <p class="testimonial-text">"The interface is so easy to use, and I received my results within seconds. This technology is revolutionizing eye care!"</p>
+            <p class="testimonial-author">- Emily Rodriguez</p>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Check Your Eye Health?</h2>
+        <p>Upload your eye scan and get an instant AI-powered analysis</p>
+        <a href="prediction.html" class="cta-button">Start Free Diagnosis</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <i class="fas fa-eye logo-icon"></i>
+          <span>Vision AI</span>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-section">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="prediction.html">Prediction</a></li>
+              <li><a href="about.html">About Disease</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+              <li><i class="fas fa-envelope"></i> contact@visionai.com</li>
+              <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+              <li><i class="fas fa-map-marker-alt"></i> 123 AI Avenue, Tech City</li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Social Media</h3>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vision AI Insight. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="src/script.js"></script>
   </body>
 </html>
